@@ -112,8 +112,8 @@
     .story-card { background:var(--surface); border:1px solid var(--border); border-radius:6px; overflow:hidden; cursor:pointer; transition:transform .3s, border-color .3s, box-shadow .3s; }
     .story-card:hover { transform:translateY(-5px); border-color:rgba(229,18,31,.5); box-shadow:0 14px 40px rgba(0,0,0,.6), 0 0 24px rgba(229,18,31,.15); }
     .story-thumb { aspect-ratio:16/8; overflow:hidden; background:var(--surface-2); position:relative; }
-    .story-thumb svg { width:100%; height:100%; display:block; transition:transform .5s; }
-    .story-card:hover .story-thumb svg { transform:scale(1.05); }
+    .story-thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s, filter .45s; filter:saturate(.92) brightness(.9); }
+    .story-card:hover .story-thumb img { transform:scale(1.05); filter:saturate(1.05) brightness(1); }
     .story-num { position:absolute; top:.8rem; left:.9rem; font-family:'Special Elite', cursive; font-size:.72rem; letter-spacing:.24em; color:var(--blood-br); text-shadow:0 0 10px rgba(0,0,0,.9); background:rgba(7,7,9,.65); padding:.25rem .6rem; border-radius:2px; }
     .story-info { padding:1.3rem 1.4rem 1.5rem; }
     .story-title { font-family:'Special Elite', cursive; font-size:1.12rem; color:var(--bone); line-height:1.4; }
@@ -127,7 +127,7 @@
     .story-close { position:fixed; top:1.1rem; right:1.4rem; font-size:2rem; color:var(--bone); cursor:pointer; line-height:1; background:rgba(7,7,9,.8); border:1px solid var(--border); border-radius:50%; width:44px; height:44px; z-index:610; transition:color .3s, border-color .3s; }
     .story-close:hover { color:var(--blood-br); border-color:var(--blood-br); }
     .story-banner { height:280px; }
-    .story-banner svg { width:100%; height:100%; display:block; }
+    .story-banner img { width:100%; height:100%; object-fit:cover; object-position:center 30%; display:block; }
     .story-content { padding:2.4rem 2.8rem 2.8rem; }
     .story-kicker { font-family:'Special Elite', cursive; font-size:.7rem; letter-spacing:.3em; text-transform:uppercase; color:var(--blood-br); margin-bottom:.7rem; }
     .story-content h3 { font-family:'Creepster', cursive; font-size:clamp(1.8rem, 4vw, 2.6rem); font-weight:400; letter-spacing:.04em; color:var(--bone); line-height:1.15; margin-bottom:1.6rem; text-shadow:0 0 18px rgba(229,18,31,.3); }
@@ -441,7 +441,7 @@
     {
       title:'El inquilino del tercer piso',
       teaser:'El edificio solo tiene dos pisos.',
-      img:`<svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="h1s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0b14"/><stop offset="1" stop-color="#141019"/></linearGradient><radialGradient id="h1m"><stop offset="0" stop-color="#d8d3c8" stop-opacity=".8"/><stop offset="1" stop-color="#d8d3c8" stop-opacity="0"/></radialGradient><radialGradient id="h1r"><stop offset="0" stop-color="#e5121f" stop-opacity=".55"/><stop offset="1" stop-color="#e5121f" stop-opacity="0"/></radialGradient></defs><rect width="640" height="360" fill="url(#h1s)"/><circle cx="530" cy="70" r="70" fill="url(#h1m)" opacity=".45"/><circle cx="530" cy="70" r="24" fill="#d8d3c8" opacity=".85"/><rect x="0" y="330" width="640" height="30" fill="#060609"/><rect x="60" y="150" width="90" height="180" fill="#08080d"/><rect x="480" y="170" width="110" height="160" fill="#08080d"/><rect x="190" y="70" width="240" height="260" fill="#07070b"/><rect x="185" y="60" width="250" height="12" fill="#0d0d13"/><g fill="#101018"><rect x="215" y="95" width="46" height="32"/><rect x="297" y="95" width="46" height="32"/><rect x="379" y="95" width="46" height="32"/><rect x="215" y="150" width="46" height="32"/><rect x="379" y="150" width="46" height="32"/><rect x="215" y="205" width="46" height="32"/><rect x="297" y="205" width="46" height="32"/><rect x="379" y="205" width="46" height="32"/><rect x="215" y="260" width="46" height="32"/><rect x="297" y="260" width="46" height="32"/><rect x="379" y="260" width="46" height="32"/></g><circle cx="320" cy="166" r="60" fill="url(#h1r)"/><rect x="297" y="150" width="46" height="32" fill="#e5121f" opacity=".8"/><circle cx="320" cy="171" r="7" fill="#07070b"/><path d="M309 182 q11 -9 22 0 v6 h-22 z" fill="#07070b"/></svg>`,
+      img:'img/el-inquilino-del-tercer-piso.jpg',
       body:[
         'Cuando me mudé al edificio de la calle Duarte, la casera me dio una sola regla: «Si alguien toca tu puerta de madrugada diciendo que es tu vecino del tercer piso, no abras. Ni respondas.»',
         'Me reí por dentro. Era una anciana supersticiosa y el alquiler estaba baratísimo. Durante meses no pasó absolutamente nada.',
@@ -453,7 +453,7 @@
     {
       title:'La niña del espejo',
       teaser:'El reflejo de mi hija empezó a moverse un segundo tarde.',
-      img:`<svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="h2s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d0c12"/><stop offset="1" stop-color="#151218"/></linearGradient><linearGradient id="h2g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a1922"/><stop offset="1" stop-color="#0e0d14"/></linearGradient><radialGradient id="h2c"><stop offset="0" stop-color="#e5121f" stop-opacity=".5"/><stop offset="1" stop-color="#e5121f" stop-opacity="0"/></radialGradient></defs><rect width="640" height="360" fill="url(#h2s)"/><rect x="0" y="320" width="640" height="40" fill="#0a090e"/><ellipse cx="320" cy="180" rx="98" ry="140" fill="none" stroke="#4a3f33" stroke-width="12"/><ellipse cx="320" cy="180" rx="90" ry="132" fill="url(#h2g)"/><ellipse cx="320" cy="140" rx="20" ry="24" fill="#d8d3c8" opacity=".14"/><path d="M290 230 q30 -60 60 0 v40 h-60 z" fill="#d8d3c8" opacity=".1"/><circle cx="313" cy="138" r="2.5" fill="#e5121f" opacity=".8"/><circle cx="327" cy="138" r="2.5" fill="#e5121f" opacity=".8"/><circle cx="150" cy="290" r="50" fill="url(#h2c)"/><rect x="144" y="270" width="12" height="34" fill="#d8d3c8" opacity=".25"/><ellipse cx="150" cy="262" rx="5" ry="9" fill="#e5121f" opacity=".9"/><ellipse cx="150" cy="260" rx="2" ry="5" fill="#ffd9a0" opacity=".9"/></svg>`,
+      img:'img/la-nina-del-espejo.jpg',
       body:[
         'Compré el espejo en un mercado de pulgas. Marco antiguo, precio ridículo. El vendedor no me miró a los ojos ni una sola vez mientras le pagaba.',
         'Fue mi hija quien lo notó: «Mami, la niña del espejo se queda quieta cuando yo me muevo.» Pensé que era un juego, hasta que lo vi con mis propios ojos: su reflejo parpadeaba fuera de tiempo. Sonreía un segundo tarde.',
@@ -465,7 +465,7 @@
     {
       title:'El faro de la Isla Negra',
       teaser:'Encontraron el diario del farero. Nunca al farero.',
-      img:`<svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="h3s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a0a13"/><stop offset="1" stop-color="#10121c"/></linearGradient><linearGradient id="h3w" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c0f1a"/><stop offset="1" stop-color="#070810"/></linearGradient></defs><rect width="640" height="360" fill="url(#h3s)"/><rect x="0" y="240" width="640" height="120" fill="url(#h3w)"/><path d="M0 244 q40 -6 80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0" stroke="#1c2233" stroke-width="2" fill="none"/><path d="M0 270 q50 -5 100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0" stroke="#161c2c" stroke-width="2" fill="none" opacity=".7"/><polygon points="240,240 400,240 380,190 260,190" fill="#0b0b12"/><polygon points="300,190 340,190 334,90 306,90" fill="#191922"/><rect x="306" y="120" width="28" height="16" fill="#0d0d14"/><rect x="306" y="155" width="28" height="16" fill="#0d0d14"/><rect x="302" y="74" width="36" height="20" fill="#0d0d14"/><circle cx="320" cy="84" r="7" fill="#e5121f" opacity=".95"/><polygon points="320,84 640,30 640,140" fill="#d8d3c8" opacity=".07"/><polygon points="320,84 0,40 0,130" fill="#d8d3c8" opacity=".05"/><polygon points="296,74 344,74 320,56" fill="#14141c"/><circle cx="150" cy="285" r="4" fill="#e5121f" opacity=".8"/><circle cx="168" cy="285" r="4" fill="#e5121f" opacity=".8"/></svg>`,
+      img:'img/el-faro-de-la-isla-negra.jpg',
       body:[
         'Bitácora del farero, 3 de octubre: «Tercera noche de tormenta. Algo grande nada en círculos alrededor de la isla. No es una ballena. Las ballenas no se detienen a mirar.»',
         '7 de octubre: «Hoy entendí para qué sirve realmente este faro. No es para guiar a los barcos. Es para mantener la luz sobre el agua. A eso que nada ahí abajo no le gusta la luz.»',
@@ -477,7 +477,7 @@
     {
       title:'Las 3:33',
       teaser:'Mi abuela solo me dejó una regla en herencia.',
-      img:`<svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="h4s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a0a0f"/><stop offset="1" stop-color="#100d13"/></linearGradient><radialGradient id="h4r"><stop offset="0" stop-color="#e5121f" stop-opacity=".7"/><stop offset="1" stop-color="#e5121f" stop-opacity="0"/></radialGradient></defs><rect width="640" height="360" fill="url(#h4s)"/><polygon points="0,360 640,360 520,300 120,300" fill="#0c0c11"/><line x1="0" y1="360" x2="180" y2="300" stroke="#16161e" stroke-width="2"/><line x1="640" y1="360" x2="460" y2="300" stroke="#16161e" stroke-width="2"/><line x1="120" y1="0" x2="200" y2="300" stroke="#121218" stroke-width="2" opacity=".5"/><line x1="520" y1="0" x2="440" y2="300" stroke="#121218" stroke-width="2" opacity=".5"/><rect x="278" y="130" width="84" height="172" fill="#151019" stroke="#241c26" stroke-width="3"/><rect x="290" y="145" width="60" height="60" fill="none" stroke="#241c26" stroke-width="2"/><rect x="290" y="218" width="60" height="70" fill="none" stroke="#241c26" stroke-width="2"/><circle cx="350" cy="220" r="4" fill="#4a3f33"/><ellipse cx="320" cy="303" rx="52" ry="9" fill="url(#h4r)"/><rect x="278" y="298" width="84" height="5" fill="#e5121f" opacity=".85"/><text x="452" y="82" font-family="monospace" font-size="34" fill="#e5121f" opacity=".9" letter-spacing="4">3:33</text><text x="452" y="104" font-family="monospace" font-size="12" fill="#7a3a3e" letter-spacing="3">AM</text></svg>`,
+      img:'img/las-3-33.jpg',
       body:[
         'Mi abuela murió dejándome su casa y un sobre lacrado. Adentro, una sola regla escrita a mano: «Si tocan la puerta a las 3:33, no abras. No importa qué voz tenga. No importa qué diga. A las 3:34 se va.»',
         'Durante un año, nada. Empecé a pensar que la pobre vieja deliraba.',
@@ -489,7 +489,7 @@
     {
       title:'Las voces del bosque',
       teaser:'Ahí adentro, algo colecciona voces. Y ensaya con la tuya.',
-      img:`<svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="h5s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0d10"/><stop offset="1" stop-color="#11141a"/></linearGradient></defs><rect width="640" height="360" fill="url(#h5s)"/><rect x="0" y="150" width="640" height="90" fill="#d8d3c8" opacity=".05"/><rect x="0" y="180" width="640" height="40" fill="#d8d3c8" opacity=".05"/><g fill="#05050a"><polygon points="60,360 90,360 82,40 68,40"/><polygon points="150,360 176,360 170,80 156,80"/><polygon points="250,360 272,360 266,20 256,20"/><polygon points="380,360 404,360 398,60 386,60"/><polygon points="480,360 508,360 500,30 488,30"/><polygon points="580,360 604,360 598,90 586,90"/></g><g stroke="#05050a" stroke-width="6" stroke-linecap="round"><line x1="75" y1="120" x2="30" y2="90"/><line x1="82" y1="180" x2="130" y2="150"/><line x1="264" y1="100" x2="310" y2="70"/><line x1="260" y1="160" x2="215" y2="135"/><line x1="495" y1="110" x2="540" y2="80"/><line x1="490" y1="170" x2="445" y2="145"/></g><circle cx="330" cy="205" r="4.5" fill="#e5121f"/><circle cx="352" cy="205" r="4.5" fill="#e5121f"/><circle cx="330" cy="205" r="9" fill="#e5121f" opacity=".25"/><circle cx="352" cy="205" r="9" fill="#e5121f" opacity=".25"/></svg>`,
+      img:'img/las-voces-del-bosque.jpg',
       body:[
         'Los cazadores de la zona lo saben desde siempre: si escuchas tu propio nombre en el bosque después del anochecer, no respondas. No corras. No preguntes quién anda ahí. Hay algo entre los pinos que colecciona voces.',
         'Mi padre lo ignoró una vez. Escuchó a su hermano gritar «¡ayuda!» entre los árboles y corrió hacia el sonido. Corrió durante horas. Su hermano estaba en casa, dormido desde las nueve.',
@@ -500,7 +500,7 @@
     {
       title:'La muñeca de la abuela',
       teaser:'Siempre mira hacia la puerta. Nadie la mueve.',
-      img:`<svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="h6s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c0b10"/><stop offset="1" stop-color="#121016"/></linearGradient></defs><rect width="640" height="360" fill="url(#h6s)"/><rect x="430" y="50" width="130" height="170" fill="#d8d3c8" opacity=".1"/><line x1="495" y1="50" x2="495" y2="220" stroke="#0c0b10" stroke-width="8"/><line x1="430" y1="135" x2="560" y2="135" stroke="#0c0b10" stroke-width="8"/><polygon points="430,220 560,220 620,360 370,360" fill="#d8d3c8" opacity=".05"/><rect x="0" y="330" width="640" height="30" fill="#08070c"/><g fill="#0a090f"><rect x="170" y="230" width="110" height="14"/><rect x="176" y="244" width="12" height="86"/><rect x="262" y="244" width="12" height="86"/><rect x="170" y="140" width="12" height="94"/><rect x="170" y="140" width="96" height="10"/></g><circle cx="225" cy="185" r="22" fill="#12101a"/><path d="M203 210 q22 -18 44 0 v22 h-44 z" fill="#12101a"/><circle cx="218" cy="182" r="3" fill="#e5121f"/><circle cx="232" cy="182" r="3" fill="#e5121f"/><circle cx="218" cy="182" r="7" fill="#e5121f" opacity=".2"/><circle cx="232" cy="182" r="7" fill="#e5121f" opacity=".2"/><path d="M207 168 q18 -14 36 0 q-4 -18 -18 -18 q-14 0 -18 18z" fill="#0a090f"/></svg>`,
+      img:'img/la-muneca-de-la-abuela.jpg',
       body:[
         'La muñeca de porcelana llegó con la herencia de la abuela. En su casa siempre estuvo sentada en la misma silla, frente a la puerta. «Para vigilar», decía ella, y en la familia nadie preguntaba más.',
         'La puse en una repisa del pasillo, mirando a la pared. A la mañana siguiente miraba hacia la puerta de mi cuarto. La giré. Amaneció igual. La encerré en una caja sellada en el sótano.',
@@ -512,7 +512,7 @@
     {
       title:'El último turno',
       teaser:'El timbre de la habitación 408 sigue sonando. La 408 lleva once años vacía.',
-      img:`<svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="h7s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0c0f"/><stop offset="1" stop-color="#101216"/></linearGradient></defs><rect width="640" height="360" fill="url(#h7s)"/><polygon points="0,360 640,360 500,290 140,290" fill="#0d0e12"/><polygon points="140,290 500,290 500,60 140,60" fill="#0e0f14"/><polygon points="0,0 140,60 140,290 0,360" fill="#0a0b0f"/><polygon points="640,0 500,60 500,290 640,360" fill="#0a0b0f"/><rect x="200" y="110" width="60" height="150" fill="#08090d" stroke="#1a1b22" stroke-width="2"/><rect x="380" y="110" width="60" height="150" fill="#08090d" stroke="#1a1b22" stroke-width="2"/><rect x="240" y="70" width="160" height="10" fill="#d8d3c8" opacity=".3"/><rect x="280" y="70" width="40" height="10" fill="#d8d3c8" opacity=".08"/><rect x="392" y="96" width="36" height="16" fill="#e5121f" opacity=".85"/><text x="396" y="108" font-family="monospace" font-size="11" fill="#0b0c0f">408</text><g stroke="#05060a" stroke-width="4" fill="none"><circle cx="300" cy="262" r="24"/><circle cx="345" cy="268" r="12"/><line x1="300" y1="238" x2="300" y2="200"/><line x1="300" y1="204" x2="340" y2="204"/><line x1="340" y1="204" x2="348" y2="256"/></g></svg>`,
+      img:'img/el-ultimo-turno.jpg',
       body:[
         'Soy enfermera de turno nocturno. La regla no escrita del piso cuatro es simple: si suena el timbre de la habitación 408, se ignora. La 408 lleva once años vacía. Clausurada. Sin cama, sin paciente, sin timbre… en teoría.',
         'Anoche sonó a las 2:15. Luego a las 2:30. A las 2:45 el sonido cambió: ya no era el timbre. Era mi nombre, saliendo del intercomunicador entre ráfagas de estática.',
@@ -524,7 +524,7 @@
     {
       title:'El pasajero',
       teaser:'No recojas a nadie en el kilómetro 13. Tampoco pases de largo.',
-      img:`<svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="h8s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#08090f"/><stop offset="1" stop-color="#0e1016"/></linearGradient><radialGradient id="h8g"><stop offset="0" stop-color="#d8d3c8" stop-opacity=".28"/><stop offset="1" stop-color="#d8d3c8" stop-opacity="0"/></radialGradient></defs><rect width="640" height="360" fill="url(#h8s)"/><circle cx="90" cy="60" r="20" fill="#d8d3c8" opacity=".7"/><circle cx="90" cy="60" r="42" fill="url(#h8g)" opacity=".5"/><rect x="0" y="200" width="640" height="160" fill="#090a0e"/><polygon points="0,360 640,360 370,205 270,205" fill="#101017"/><ellipse cx="320" cy="207" rx="60" ry="10" fill="url(#h8g)"/><g fill="#d8d3c8" opacity=".65"><rect x="314" y="330" width="12" height="22"/><rect x="316" y="290" width="9" height="20"/><rect x="317" y="258" width="7" height="16"/><rect x="318" y="234" width="5" height="12"/><rect x="319" y="218" width="3.5" height="9"/></g><g fill="#04050a"><circle cx="475" cy="235" r="13"/><path d="M462 248 q13 -10 26 0 l6 64 h-38 z"/><rect x="466" y="310" width="8" height="42"/><rect x="480" y="310" width="8" height="42"/></g><line x1="0" y1="200" x2="640" y2="200" stroke="#161821" stroke-width="2"/></svg>`,
+      img:'img/el-pasajero.jpg',
       body:[
         'La carretera vieja tiene una leyenda que todos los choferes conocen: un hombre pide aventón en el kilómetro 13, siempre de noche, siempre bajo la lluvia. Si te detienes, te pide que lo lleves «hasta donde está su familia». Si no te detienes… te acompaña igual.',
         'Yo no me detuve. Lo vi de reojo — quieto, empapado, demasiado quieto — y pisé el acelerador. Manejé veinte minutos con el corazón en la boca antes de atreverme a mirar el retrovisor.',
@@ -536,7 +536,7 @@
     {
       title:'El pozo del patio',
       teaser:'De niños le gritábamos al pozo. Un verano, empezó a respondernos primero.',
-      img:`<svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="h9s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a0b12"/><stop offset="1" stop-color="#121018"/></linearGradient><radialGradient id="h9m"><stop offset="0" stop-color="#d8d3c8" stop-opacity=".9"/><stop offset="1" stop-color="#d8d3c8" stop-opacity="0"/></radialGradient></defs><rect width="640" height="360" fill="url(#h9s)"/><circle cx="120" cy="80" r="80" fill="url(#h9m)" opacity=".4"/><circle cx="120" cy="80" r="32" fill="#d8d3c8" opacity=".8"/><rect x="0" y="280" width="640" height="80" fill="#0a0a10"/><g stroke="#141420" stroke-width="2"><line x1="40" y1="300" x2="52" y2="284"/><line x1="90" y1="310" x2="102" y2="294"/><line x1="560" y1="300" x2="572" y2="284"/><line x1="610" y1="315" x2="622" y2="299"/></g><rect x="255" y="215" width="130" height="70" fill="#15151f"/><path d="M255 215 h130 v-6 h-130 z" fill="#1d1d28"/><ellipse cx="320" cy="212" rx="65" ry="14" fill="#04040a"/><rect x="262" y="150" width="8" height="68" fill="#161620"/><rect x="370" y="150" width="8" height="68" fill="#161620"/><polygon points="250,152 390,152 320,118" fill="#121219"/><line x1="320" y1="152" x2="320" y2="206" stroke="#2a2a33" stroke-width="2"/><circle cx="320" cy="212" r="3.5" fill="#e5121f"/><circle cx="320" cy="212" r="8" fill="#e5121f" opacity=".25"/></svg>`,
+      img:'img/el-pozo-del-patio.jpg',
       body:[
         'En el patio de mi abuela había un pozo sellado con tablas. De niños jugábamos a gritarle: el eco devolvía nuestras voces con un segundo de retraso. Nos parecía lo más gracioso del mundo.',
         'Un verano, el eco empezó a responder antes de que gritáramos. Decía nuestros nombres con una voz de niño que no era la de ninguno de nosotros. Mi abuela nos encontró ahí parados, tapó el pozo con cemento esa misma semana y nunca más nos dejó jugar en el patio.',
@@ -548,7 +548,7 @@
     {
       title:'Mensajes de mamá',
       teaser:'Mamá murió en enero. En febrero me escribió.',
-      img:`<svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hAs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#08080c"/><stop offset="1" stop-color="#0e0d13"/></linearGradient><radialGradient id="hAg"><stop offset="0" stop-color="#8a94c8" stop-opacity=".3"/><stop offset="1" stop-color="#8a94c8" stop-opacity="0"/></radialGradient></defs><rect width="640" height="360" fill="url(#hAs)"/><ellipse cx="320" cy="190" rx="220" ry="160" fill="url(#hAg)"/><rect x="248" y="60" width="144" height="264" rx="20" fill="#0b0b11" stroke="#23232e" stroke-width="3"/><rect x="260" y="78" width="120" height="228" rx="6" fill="#12121c"/><rect x="260" y="78" width="120" height="26" fill="#181826"/><text x="320" y="96" font-family="sans-serif" font-size="12" fill="#d8d3c8" text-anchor="middle">Mamá ❤</text><rect x="268" y="116" width="78" height="24" rx="9" fill="#232334"/><text x="276" y="132" font-family="sans-serif" font-size="10" fill="#c9c4ba">Abrígate hoy</text><rect x="268" y="148" width="86" height="24" rx="9" fill="#232334"/><text x="276" y="164" font-family="sans-serif" font-size="10" fill="#c9c4ba">No salgas hoy</text><rect x="268" y="180" width="96" height="24" rx="9" fill="#3a1216"/><text x="276" y="196" font-family="sans-serif" font-size="10" fill="#e8b0b4">Ábreme la puerta</text><text x="320" y="292" font-family="monospace" font-size="15" fill="#e5121f" text-anchor="middle" opacity=".9">3:33 AM</text><circle cx="320" cy="315" r="6" fill="none" stroke="#23232e" stroke-width="2"/></svg>`,
+      img:'img/mensajes-de-mama.jpg',
       body:[
         'Enterramos a mamá con su celular, porque papá no soportó la idea de borrarlo. En febrero me llegó un mensaje suyo: «Abrígate, que va a llover.» Lloré media hora pensando que era un error de la compañía.',
         'En marzo: «No salgas hoy.» Ese día, un carro sin frenos se llevó por delante la parada donde espero la guagua todas las mañanas. Siete heridos.',
@@ -564,7 +564,7 @@
     const card = document.createElement('div');
     card.className = 'story-card reveal';
     card.innerHTML = `
-      <div class="story-thumb">${s.img}<span class="story-num">EXP. Nº ${String(i+1).padStart(2,'0')}</span></div>
+      <div class="story-thumb"><img src="${s.img}" alt="${s.title}" loading="lazy"/><span class="story-num">EXP. Nº ${String(i+1).padStart(2,'0')}</span></div>
       <div class="story-info">
         <div class="story-title">${s.title}</div>
         <p class="story-teaser">"${s.teaser}"</p>
@@ -580,7 +580,7 @@
   function openStory(i){
     sIdx = i;
     const s = STORIES[i];
-    document.getElementById('storyBanner').innerHTML = s.img;
+    document.getElementById('storyBanner').innerHTML = '<img src="' + s.img + '" alt="' + s.title + '"/>';
     document.getElementById('storyKicker').textContent = `Expediente Nº ${String(i+1).padStart(2,'0')} · Terror Profundo`;
     document.getElementById('storyTitle').textContent = s.title;
     document.getElementById('storyBody').innerHTML = s.body.map(p => `<p>${p}</p>`).join('');
