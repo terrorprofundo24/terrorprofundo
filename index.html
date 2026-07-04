@@ -138,6 +138,40 @@
     .story-nav-btn:hover { color:var(--bone); border-color:var(--blood-br); }
     @media (max-width:800px) { .stories-grid { grid-template-columns:1fr; } .story-content { padding:1.8rem 1.4rem 2rem; } .story-footer-nav { padding:1.2rem 1.4rem; } .story-banner { height:200px; } }
 
+    /* JUEGO DE LAS PUERTAS */
+    #juego { background:var(--black); border-top:1px solid var(--border); text-align:center; }
+    .doors-row { display:flex; gap:1.8rem; justify-content:center; align-items:flex-end; flex-wrap:wrap; margin:3.2rem auto 0; max-width:1000px; perspective:900px; }
+    .door-unit { cursor:pointer; user-select:none; }
+    .door-frame { position:relative; width:128px; height:200px; border-radius:64px 64px 0 0; background:#050508; border:4px solid #2a1f2a; overflow:hidden; box-shadow:0 0 0 1px rgba(232,227,216,.06), 0 12px 30px rgba(0,0,0,.55); }
+    .door-inside { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 60%, rgba(160,6,16,.3), transparent 65%), #030305; display:flex; align-items:center; justify-content:center; font-size:1.8rem; }
+    .door-panel { position:absolute; inset:0; background:linear-gradient(180deg,#241a26,#150f18); border-radius:60px 60px 0 0; transform-origin:left center; transition:transform .65s cubic-bezier(.4,0,.2,1); z-index:2; }
+    .door-panel::before { content:''; position:absolute; inset:16px 14px 12px; border:1px solid rgba(232,227,216,.14); border-radius:46px 46px 0 0; }
+    .door-knob { position:absolute; right:13px; top:52%; width:9px; height:9px; border-radius:50%; background:#6b5b45; box-shadow:0 0 6px rgba(232,227,216,.35); }
+    .door-num { position:absolute; top:40px; left:0; right:0; font-family:'Special Elite', cursive; font-size:1.15rem; color:rgba(232,227,216,.55); }
+    .door-unit:not(.open):hover .door-frame { border-color:var(--blood); box-shadow:0 0 22px rgba(229,18,31,.3), 0 12px 30px rgba(0,0,0,.55); }
+    .door-unit.open .door-panel { transform:rotateY(-84deg); }
+    .door-unit.open { cursor:default; }
+    .door-label { margin-top:.7rem; font-family:'Special Elite', cursive; font-size:.62rem; letter-spacing:.18em; color:var(--ash); }
+    .juego-msg { font-family:'Special Elite', cursive; font-size:.95rem; color:var(--bone); margin-top:2.4rem; min-height:1.8em; }
+    .juego-msg.bad { color:var(--blood-br); text-shadow:0 0 12px var(--blood-glow); }
+    #juegoReset { margin-top:1.2rem; cursor:pointer; font-family:'Jost', sans-serif; display:none; }
+
+    /* OVERLAY DEL SUSTO */
+    .scare-overlay { position:fixed; inset:0; z-index:700; background:#000; display:none; }
+    .scare-overlay.open { display:block; }
+    .scare-overlay video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .scare-flash { position:absolute; inset:0; display:none; align-items:center; justify-content:center; flex-direction:column; gap:1.2rem; text-align:center; padding:2rem; }
+    .scare-flash.on { display:flex; animation:flicker .13s steps(2) infinite; }
+    @keyframes flicker { 0%{background:#000} 50%{background:#2a0004} 100%{background:#000} }
+    .scare-flash .skull { font-size:6rem; animation:scareZoom .5s ease-out; filter:drop-shadow(0 0 30px var(--blood-br)); }
+    @keyframes scareZoom { from{ transform:scale(.15); opacity:0 } to{ transform:scale(1); opacity:1 } }
+    .scare-flash p { font-family:'Creepster', cursive; font-size:clamp(1.4rem, 5vw, 2.4rem); color:var(--blood-br); text-shadow:0 0 20px var(--blood-glow); }
+    .scare-close { position:absolute; top:1.1rem; right:1.4rem; font-size:2rem; color:var(--bone); cursor:pointer; line-height:1; background:rgba(7,7,9,.8); border:1px solid var(--border); border-radius:50%; width:44px; height:44px; z-index:710; display:none; transition:color .3s, border-color .3s; }
+    .scare-close:hover { color:var(--blood-br); border-color:var(--blood-br); }
+    .scare-after { position:absolute; left:0; right:0; bottom:7vh; display:none; flex-direction:column; align-items:center; gap:1.1rem; z-index:705; padding:0 5vw; text-align:center; }
+    .scare-after.show { display:flex; }
+    .scare-after p { font-family:'Special Elite', cursive; font-size:1rem; color:var(--bone); text-shadow:0 2px 10px rgba(0,0,0,.9); }
+
     /* ABOUT */
     #about { background:var(--black); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
     .about-grid { display:grid; grid-template-columns:auto 1fr; gap:4rem; align-items:center; max-width:1000px; margin:0 auto; }
@@ -212,6 +246,7 @@
   <ul class="nav-links">
     <li><a href="#videos">Videos</a></li>
     <li><a href="#historias">Historias</a></li>
+    <li><a href="#juego">Juego</a></li>
     <li><a href="#about">El Canal</a></li>
     <li><a href="#apoyo">Apoyar</a></li>
     <li><a href="https://www.youtube.com/@TerrorProfundo2?sub_confirmation=1" target="_blank" rel="noopener" class="btn-sub">▶ Suscríbete</a></li>
@@ -288,6 +323,32 @@
   </article>
 </div>
 
+<!-- JUEGO DE LAS PUERTAS -->
+<section id="juego">
+  <div class="reveal" style="max-width:640px;margin:0 auto;">
+    <p class="section-label">// ¿Te atreves a jugar?</p>
+    <h2 class="section-title">El pasillo de las puertas</h2>
+    <p class="section-intro" style="margin-left:auto;margin-right:auto;">Cinco puertas. Detrás de cuatro no hay nada… todavía. Detrás de una, algo espera desde hace mucho. Abre con cuidado.</p>
+  </div>
+  <div class="doors-row" id="doorsRow"><!-- JS --></div>
+  <p class="juego-msg" id="juegoMsg"></p>
+  <button class="btn-ghost" id="juegoReset">Cerrar las puertas y jugar otra vez</button>
+</section>
+
+<!-- OVERLAY DEL SUSTO -->
+<div class="scare-overlay" id="scareOverlay">
+  <video id="scareVideo" src="video/susto.mp4" playsinline preload="auto"></video>
+  <div class="scare-flash" id="scareFlash">
+    <span class="skull">💀</span>
+    <p>NO DEBISTE ABRIR ESA PUERTA</p>
+  </div>
+  <button class="scare-close" id="scareClose" aria-label="Cerrar">&times;</button>
+  <div class="scare-after" id="scareAfter">
+    <p>Sobreviviste… esta vez. ¿Quieres más?</p>
+    <a href="https://www.youtube.com/@TerrorProfundo2?sub_confirmation=1" target="_blank" rel="noopener" class="btn-primary">▶ Suscríbete a Terror Profundo</a>
+  </div>
+</div>
+
 <!-- ABOUT -->
 <section id="about">
   <div class="about-grid">
@@ -355,6 +416,7 @@
   <ul class="footer-links">
     <li><a href="#videos">Videos</a></li>
     <li><a href="#historias">Historias</a></li>
+    <li><a href="#juego">Juego</a></li>
     <li><a href="#about">El Canal</a></li>
     <li><a href="#apoyo">Apoyar</a></li>
     <li><a href="https://www.youtube.com/@TerrorProfundo2" target="_blank" rel="noopener">YouTube</a></li>
@@ -441,7 +503,7 @@
     {
       title:'El inquilino del tercer piso',
       teaser:'El edificio solo tiene dos pisos.',
-      img:'img/el-inquilino-del-tercer-piso.jpg',
+      img:'img/el-inquilino-del-tercer-piso.jpg', pos:'center 30%',
       body:[
         'Cuando me mudé al edificio de la calle Duarte, la casera me dio una sola regla: «Si alguien toca tu puerta de madrugada diciendo que es tu vecino del tercer piso, no abras. Ni respondas.»',
         'Me reí por dentro. Era una anciana supersticiosa y el alquiler estaba baratísimo. Durante meses no pasó absolutamente nada.',
@@ -453,7 +515,7 @@
     {
       title:'La niña del espejo',
       teaser:'El reflejo de mi hija empezó a moverse un segundo tarde.',
-      img:'img/la-nina-del-espejo.jpg',
+      img:'img/la-nina-del-espejo.jpg', pos:'center 40%',
       body:[
         'Compré el espejo en un mercado de pulgas. Marco antiguo, precio ridículo. El vendedor no me miró a los ojos ni una sola vez mientras le pagaba.',
         'Fue mi hija quien lo notó: «Mami, la niña del espejo se queda quieta cuando yo me muevo.» Pensé que era un juego, hasta que lo vi con mis propios ojos: su reflejo parpadeaba fuera de tiempo. Sonreía un segundo tarde.',
@@ -465,7 +527,7 @@
     {
       title:'El faro de la Isla Negra',
       teaser:'Encontraron el diario del farero. Nunca al farero.',
-      img:'img/el-faro-de-la-isla-negra.jpg',
+      img:'img/el-faro-de-la-isla-negra.jpg', pos:'center 24%',
       body:[
         'Bitácora del farero, 3 de octubre: «Tercera noche de tormenta. Algo grande nada en círculos alrededor de la isla. No es una ballena. Las ballenas no se detienen a mirar.»',
         '7 de octubre: «Hoy entendí para qué sirve realmente este faro. No es para guiar a los barcos. Es para mantener la luz sobre el agua. A eso que nada ahí abajo no le gusta la luz.»',
@@ -477,7 +539,7 @@
     {
       title:'Las 3:33',
       teaser:'Mi abuela solo me dejó una regla en herencia.',
-      img:'img/las-3-33.jpg',
+      img:'img/las-3-33.jpg', pos:'center 50%',
       body:[
         'Mi abuela murió dejándome su casa y un sobre lacrado. Adentro, una sola regla escrita a mano: «Si tocan la puerta a las 3:33, no abras. No importa qué voz tenga. No importa qué diga. A las 3:34 se va.»',
         'Durante un año, nada. Empecé a pensar que la pobre vieja deliraba.',
@@ -489,7 +551,7 @@
     {
       title:'Las voces del bosque',
       teaser:'Ahí adentro, algo colecciona voces. Y ensaya con la tuya.',
-      img:'img/las-voces-del-bosque.jpg',
+      img:'img/las-voces-del-bosque.jpg', pos:'center 30%',
       body:[
         'Los cazadores de la zona lo saben desde siempre: si escuchas tu propio nombre en el bosque después del anochecer, no respondas. No corras. No preguntes quién anda ahí. Hay algo entre los pinos que colecciona voces.',
         'Mi padre lo ignoró una vez. Escuchó a su hermano gritar «¡ayuda!» entre los árboles y corrió hacia el sonido. Corrió durante horas. Su hermano estaba en casa, dormido desde las nueve.',
@@ -500,7 +562,7 @@
     {
       title:'La muñeca de la abuela',
       teaser:'Siempre mira hacia la puerta. Nadie la mueve.',
-      img:'img/la-muneca-de-la-abuela.jpg',
+      img:'img/la-muneca-de-la-abuela.jpg', pos:'center 35%',
       body:[
         'La muñeca de porcelana llegó con la herencia de la abuela. En su casa siempre estuvo sentada en la misma silla, frente a la puerta. «Para vigilar», decía ella, y en la familia nadie preguntaba más.',
         'La puse en una repisa del pasillo, mirando a la pared. A la mañana siguiente miraba hacia la puerta de mi cuarto. La giré. Amaneció igual. La encerré en una caja sellada en el sótano.',
@@ -512,7 +574,7 @@
     {
       title:'El último turno',
       teaser:'El timbre de la habitación 408 sigue sonando. La 408 lleva once años vacía.',
-      img:'img/el-ultimo-turno.jpg',
+      img:'img/el-ultimo-turno.jpg', pos:'center 40%',
       body:[
         'Soy enfermera de turno nocturno. La regla no escrita del piso cuatro es simple: si suena el timbre de la habitación 408, se ignora. La 408 lleva once años vacía. Clausurada. Sin cama, sin paciente, sin timbre… en teoría.',
         'Anoche sonó a las 2:15. Luego a las 2:30. A las 2:45 el sonido cambió: ya no era el timbre. Era mi nombre, saliendo del intercomunicador entre ráfagas de estática.',
@@ -524,7 +586,7 @@
     {
       title:'El pasajero',
       teaser:'No recojas a nadie en el kilómetro 13. Tampoco pases de largo.',
-      img:'img/el-pasajero.jpg',
+      img:'img/el-pasajero.jpg', pos:'center 25%',
       body:[
         'La carretera vieja tiene una leyenda que todos los choferes conocen: un hombre pide aventón en el kilómetro 13, siempre de noche, siempre bajo la lluvia. Si te detienes, te pide que lo lleves «hasta donde está su familia». Si no te detienes… te acompaña igual.',
         'Yo no me detuve. Lo vi de reojo — quieto, empapado, demasiado quieto — y pisé el acelerador. Manejé veinte minutos con el corazón en la boca antes de atreverme a mirar el retrovisor.',
@@ -536,7 +598,7 @@
     {
       title:'El pozo del patio',
       teaser:'De niños le gritábamos al pozo. Un verano, empezó a respondernos primero.',
-      img:'img/el-pozo-del-patio.jpg',
+      img:'img/el-pozo-del-patio.jpg', pos:'center 38%',
       body:[
         'En el patio de mi abuela había un pozo sellado con tablas. De niños jugábamos a gritarle: el eco devolvía nuestras voces con un segundo de retraso. Nos parecía lo más gracioso del mundo.',
         'Un verano, el eco empezó a responder antes de que gritáramos. Decía nuestros nombres con una voz de niño que no era la de ninguno de nosotros. Mi abuela nos encontró ahí parados, tapó el pozo con cemento esa misma semana y nunca más nos dejó jugar en el patio.',
@@ -548,7 +610,7 @@
     {
       title:'Mensajes de mamá',
       teaser:'Mamá murió en enero. En febrero me escribió.',
-      img:'img/mensajes-de-mama.jpg',
+      img:'img/mensajes-de-mama.jpg', pos:'center 42%',
       body:[
         'Enterramos a mamá con su celular, porque papá no soportó la idea de borrarlo. En febrero me llegó un mensaje suyo: «Abrígate, que va a llover.» Lloré media hora pensando que era un error de la compañía.',
         'En marzo: «No salgas hoy.» Ese día, un carro sin frenos se llevó por delante la parada donde espero la guagua todas las mañanas. Siete heridos.',
@@ -564,7 +626,7 @@
     const card = document.createElement('div');
     card.className = 'story-card reveal';
     card.innerHTML = `
-      <div class="story-thumb"><img src="${s.img}" alt="${s.title}" loading="lazy"/><span class="story-num">EXP. Nº ${String(i+1).padStart(2,'0')}</span></div>
+      <div class="story-thumb"><img src="${s.img}" alt="${s.title}" loading="lazy" style="object-position:${s.pos || 'center'}"/><span class="story-num">EXP. Nº ${String(i+1).padStart(2,'0')}</span></div>
       <div class="story-info">
         <div class="story-title">${s.title}</div>
         <p class="story-teaser">"${s.teaser}"</p>
@@ -580,7 +642,7 @@
   function openStory(i){
     sIdx = i;
     const s = STORIES[i];
-    document.getElementById('storyBanner').innerHTML = '<img src="' + s.img + '" alt="' + s.title + '"/>';
+    document.getElementById('storyBanner').innerHTML = '<img src="' + s.img + '" alt="' + s.title + '" style="object-position:' + (s.pos || 'center') + '"/>';
     document.getElementById('storyKicker').textContent = `Expediente Nº ${String(i+1).padStart(2,'0')} · Terror Profundo`;
     document.getElementById('storyTitle').textContent = s.title;
     document.getElementById('storyBody').innerHTML = s.body.map(p => `<p>${p}</p>`).join('');
@@ -597,6 +659,101 @@
   document.getElementById('storyNext').addEventListener('click', () => openStory((sIdx + 1) % STORIES.length));
   sModal.addEventListener('click', e => { if(e.target === sModal) closeStory(); });
   document.addEventListener('keydown', e => { if(e.key === 'Escape' && sModal.classList.contains('open')) closeStory(); });
+
+  // ===== JUEGO DE LAS PUERTAS =====
+  // El video del susto va en video/susto.mp4 — si no existe, se usa un susto alternativo.
+  const DOORS = 5;
+  const ROMANOS = ['I','II','III','IV','V'];
+  const SAFE_MSGS = [
+    'Vacía. Solo el eco de tu respiración…',
+    'Algo se movió ahí dentro… pero ya no está.',
+    'Un susurro: «Fría, fría… sigue buscando.»',
+    'Huele a tierra mojada y flores viejas. Nada más.'
+  ];
+  const doorsRow = document.getElementById('doorsRow');
+  const juegoMsg = document.getElementById('juegoMsg');
+  const juegoReset = document.getElementById('juegoReset');
+  let cursedDoor = 0, gameOver = false, safeOpened = 0;
+
+  function setupGame(){
+    cursedDoor = Math.floor(Math.random() * DOORS);
+    gameOver = false; safeOpened = 0;
+    juegoMsg.textContent = 'Elige una puerta. Escucha antes de girar el pomo…';
+    juegoMsg.classList.remove('bad');
+    juegoReset.style.display = 'none';
+    doorsRow.innerHTML = '';
+    for(let i = 0; i < DOORS; i++){
+      const d = document.createElement('div');
+      d.className = 'door-unit';
+      d.innerHTML = `<div class="door-frame"><div class="door-inside">🕯️</div><div class="door-panel"><span class="door-num">${ROMANOS[i]}</span><span class="door-knob"></span></div></div><div class="door-label">PUERTA ${ROMANOS[i]}</div>`;
+      d.addEventListener('click', () => openDoor(d, i));
+      doorsRow.appendChild(d);
+    }
+  }
+  function openDoor(el, i){
+    if(gameOver || el.classList.contains('open')) return;
+    el.classList.add('open');
+    if(i === cursedDoor){
+      gameOver = true;
+      juegoMsg.textContent = 'Esa puerta no debía abrirse…';
+      juegoMsg.classList.add('bad');
+      juegoReset.style.display = 'inline-block';
+      setTimeout(triggerScare, 600);
+    } else {
+      safeOpened++;
+      juegoMsg.textContent = SAFE_MSGS[(safeOpened - 1) % SAFE_MSGS.length] + '  (' + safeOpened + ' de ' + (DOORS - 1) + ' seguras)';
+    }
+  }
+  juegoReset.addEventListener('click', setupGame);
+  setupGame();
+
+  // ===== SUSTO =====
+  const scareOverlay = document.getElementById('scareOverlay');
+  const scareVideo = document.getElementById('scareVideo');
+  const scareFlash = document.getElementById('scareFlash');
+  const scareClose = document.getElementById('scareClose');
+  const scareAfter = document.getElementById('scareAfter');
+  let videoBroken = false, flashTimer = null;
+  scareVideo.addEventListener('error', () => { videoBroken = true; });
+
+  function triggerScare(){
+    scareOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    scareClose.style.display = 'none';
+    scareAfter.classList.remove('show');
+    if(videoBroken){
+      startFallback();
+    } else {
+      scareVideo.style.display = '';
+      scareVideo.currentTime = 0;
+      const p = scareVideo.play();
+      if(p && p.catch) p.catch(startFallback);
+    }
+    setTimeout(() => { scareClose.style.display = 'block'; }, 1500);
+  }
+  function startFallback(){
+    scareVideo.style.display = 'none';
+    scareFlash.classList.add('on');
+    clearTimeout(flashTimer);
+    flashTimer = setTimeout(() => {
+      scareFlash.classList.remove('on');
+      endScare();
+    }, 2600);
+  }
+  function endScare(){
+    scareAfter.classList.add('show');
+    scareClose.style.display = 'block';
+  }
+  scareVideo.addEventListener('ended', endScare);
+  scareClose.addEventListener('click', closeScare);
+  function closeScare(){
+    scareOverlay.classList.remove('open');
+    scareFlash.classList.remove('on');
+    clearTimeout(flashTimer);
+    scareVideo.pause();
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if(e.key === 'Escape' && scareOverlay.classList.contains('open')) closeScare(); });
 
   // ===== REVEAL ON SCROLL =====
   const obs = new IntersectionObserver(entries => {
